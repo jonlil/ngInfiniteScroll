@@ -49,8 +49,10 @@ mod.directive 'infiniteScroll', ['$rootScope', '$window', '$timeout', ($rootScop
         checkWhenEnabled = true
 
     $window.on 'scroll', handler
+    $window.on 'touchmove', handler
     scope.$on '$destroy', ->
       $window.off 'scroll', handler
+      $window.off 'touchmove', handler
 
     $timeout (->
       if attrs.infiniteScrollImmediateCheck
